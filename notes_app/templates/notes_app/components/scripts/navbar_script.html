@@ -1,0 +1,79 @@
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // profile menu, also closes menu when click outside
+        const button = document.querySelector('#profileDropdownButton');
+        const menu = document.querySelector('#profileDropdown');
+
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the click from reaching the document
+            menu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && e.target !== button) {
+                // If the click is outside the menu and not on the button, close the menu
+                menu.classList.add('hidden');
+            }
+        });
+
+
+        // top navbar button on mobile, also closes menu when click outside
+        const button2 = document.querySelector('#navbar-button');
+        const menu2 = document.querySelector('#navbar-links');
+
+
+        button2.addEventListener('click', (i) => {
+            i.stopPropagation(); // Prevent the click from reaching the document
+            menu2.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (i) => {
+            if (!menu2.contains(i.target) && i.target !== button2) {
+                // If the click is outside the menu and not on the button, close the menu
+                menu2.classList.add('hidden');
+            }
+        });
+
+
+        // sidebar slides in from side when button pressed
+        const button3 = document.querySelector('[data-drawer-toggle="logo-sidebar"]');
+        const targetId = button3.getAttribute('data-drawer-target');
+        const targetElement = document.getElementById(targetId);
+
+        if (button3 && targetElement) {
+            button3.addEventListener('click', function (e) {
+                e.stopPropagation();
+                targetElement.classList.toggle('translate-x-0');
+            });
+
+            document.addEventListener('click', function () {
+                targetElement.classList.remove('translate-x-0');
+            });
+
+            targetElement.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        }
+
+
+        //  top navbar scroll - show and hide top nabar on scroll
+        const navbar = document.getElementById("navbar");
+        let prevScrollPos = window.pageYOffset;
+
+        window.onscroll = function () {
+            const currentScrollPos = window.pageYOffset;
+
+            if (prevScrollPos > currentScrollPos) {
+                navbar.style.opacity = "1";
+                navbar.style.pointerEvents = "auto"; // Enable interaction
+            } else {
+                navbar.style.opacity = "0";
+                navbar.style.pointerEvents = "none"; // Disable interaction
+            }
+
+            prevScrollPos = currentScrollPos;
+        };
+
+    });
+</script>

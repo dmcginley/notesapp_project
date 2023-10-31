@@ -1,0 +1,38 @@
+{% extends 'notes_app/base.html' %}
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+
+
+<div class="pt-20 p-4 sm:ml-64 sm:w-auto 2xl:ml-32 2xl:w-full">
+    <div class="container w-full">
+
+        <h1 class="text-3xl pb-10">Newly Added Notes</h1>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mb-4">
+
+            {% for note in notes %}
+            <div class="">
+                <a href="{{ note.get_absolute_url }}"
+                    class="note-link-hover flex flex-col bg-white border border-gray-200 rounded shadow md:m.,flex-row md:max-w-xl hover:bg-gray-100">
+                    {% if note.image %}
+                    <img class="object-cover w-full rounded-t h-24 md:h-40" src="{{ note.image.url }}" alt="">
+                    {% endif %}
+                    <div class="note_container_ellipsis flex flex-col justify-between p-4 leading-normal">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-grey-900 ">{{note.title}}
+                        </h5>
+                        <div class="note_container_ellipsis_content font-normal text-gray-700 dark:text-gray-400">
+                            {{ note.content.html|safe }}</div>
+                        <div class="content-fade-overlay"></div>
+                    </div>
+                    <div class="px-4 pb-4">
+                        <p class="text-slate-500">Folder: {{note.category}}</p>
+                        <p class="text-slate-500 text-sm">({{note.date_created}})</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

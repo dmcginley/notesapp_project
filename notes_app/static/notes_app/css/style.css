@@ -1,0 +1,37 @@
+#navbar {
+    width: calc(100% - 256px);
+}
+
+.note_container_ellipsis {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    border-radius: .5rem;
+}
+
+.content-fade-overlay {
+    position: absolute;
+    width: calc(100% - 2em);
+    height: inherit;
+    background: linear-gradient(transparent 70px, white 200px);
+}
+
+.note-link-hover:hover .content-fade-overlay {
+    background: linear-gradient(transparent 70px, #f3f4f6 200px);
+
+}
+
+.ql-editor {
+    min-height: 300px;
+}
+
+
+/* ------------------------------------ */
+/* mobile */
+/* ------------------------------------ */
+@media only screen and (max-width: 640px) {
+
+    #navbar {
+        width: 100%
+    }
+}
