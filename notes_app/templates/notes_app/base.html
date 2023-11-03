@@ -8,15 +8,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ form.media }}
+    <title>Notes - {% block title %}{% endblock %}</title>
 
     {% tailwind_css %}
+
     <!-- my css -->
     <link rel="stylesheet" type="text/css" href="{% static 'notes_app/css/style.css' %}">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'board_app/css/navbar.css' %}"> -->
 
-    <title>Notes - {% block title %}{% endblock %}</title>
-    {{ form.media }}
-
+    <!-- Qill css file -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 

@@ -151,3 +151,34 @@ SITE_ID = 2
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+QUILL_CONFIGS = {
+    'default': {
+        'placeholder': '''Compose your epic Note here...*
+''',
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'header': []},
+                    {'font': []},
+                    'bold', 'italic', 'underline', 'strike',
+
+                ], [
+                    {'list': 'ordered'}, {'list': 'bullet'},
+                    {'align': []},
+                    {'indent': '-1'}, {'indent': '+1'},
+                ], [
+                    {'script': 'sub'}, {'script': 'super'},
+                    {'color': []},
+                    {'background': []},
+                ],
+
+
+                ['image', 'link', 'clean'],
+            ]
+        }
+    }
+}

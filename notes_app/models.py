@@ -36,7 +36,7 @@ class Note(models.Model):
     slug = models.SlugField(max_length=250, unique=True)
     date_created = models.DateTimeField(default=timezone.now, editable=False)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="post_author")
+        User, on_delete=models.CASCADE, related_name="note_author")
 
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
