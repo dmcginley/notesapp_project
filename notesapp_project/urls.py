@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('notes_app.urls')),
+    path('kanban/', include('kanban_app.urls')),
+    path('todo/', include('todo_app.urls')),
     # path('profile/', include('profile_app.urls')),
     # path("__reload__/", include("django_browser_reload.urls")),
 ]

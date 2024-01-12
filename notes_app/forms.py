@@ -2,6 +2,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Fieldset
 from django.contrib.auth.models import User
+# from django_quill.forms import QuillFormField
 from .models import Note
 
 
@@ -11,7 +12,7 @@ class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = ['title', 'image',
-                  'content']
+                  'content', 'category']
 
     def __init__(self, *args, **kwargs):
         super(NoteForm, self).__init__(*args, **kwargs)
@@ -21,3 +22,4 @@ class NoteForm(forms.ModelForm):
 
         self.fields['title'].widget.attrs['placeholder'] = 'Add a title to your note*'
         self.fields['content'].widget.attrs['placeholder'] = 'Enter your content here'
+        self.fields['category'].help_text = "Please select your folder"

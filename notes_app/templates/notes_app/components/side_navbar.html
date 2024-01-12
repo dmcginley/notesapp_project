@@ -129,102 +129,46 @@
 
 
                 <li>
-                    <a href="#"
+                    <a href="{% url 'home' %}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M11 2.04947V13.0001H21.9506C21.4489 18.0534 17.1853 22.0001 12 22.0001C6.47715 22.0001 2 17.5229 2 12.0001C2 6.81475 5.94668 2.55119 11 2.04947ZM13 0.542969C18.5535 1.02133 22.9788 5.44662 23.4571 11.0001H13V0.542969Z">
                             </path>
-                            </>
-                            <span class="ml-3">Dashboard</span>
+                        </svg>
+                        <span class="ml-3">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{% url 'kanban_app:kanban_list' %}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M22 12.999V20C22 20.5523 21.5523 21 21 21H13V12.999H22ZM11 12.999V21H3C2.44772 21 2 20.5523 2 20V12.999H11ZM11 3V10.999H2V4C2 3.44772 2.44772 3 3 3H11ZM21 3C21.5523 3 22 3.44772 22 4V10.999H13V3H21Z">
                             </path>
-                            </>
-                            <span class="flex-1 ml-3 whitespace-nowrap">Kanban</span>
-                            <span
-                                class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap">Kanban</span>
+                        <span
+                            class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
                     </a>
                 </li>
-
-
-
+                <li>
+                    <a href="{% url 'todo' %}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M15 14L14.8834 14.0067C14.4243 14.0601 14.0601 14.4243 14.0067 14.8834L14 15V21H3.99826C3.44694 21 3 20.5551 3 20.0066V3.9934C3 3.44476 3.44495 3 3.9934 3H20.0066C20.5552 3 21 3.44749 21 3.9985V14H15ZM21 16L16 20.997V16H21Z">
+                            </path>
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap">To-Do's</span>
+                    </a>
+                </li>
 
                 <!-- folders -->
-
-                <li>
-                    <div class="text-slate-500 ml-2 mt-8 text-base">Folders</div>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400
-                group-hover:text-gray-600 dark:group-hover:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M22 8V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V7H21C21.5523 7 22 7.44772 22 8ZM12.4142 5H2V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap">Projects</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-violet-800 bg-violet-100 rounded-full dark:bg-blue-900 dark:text-blue-300">9</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400
-                group-hover:text-gray-600 dark:group-hover:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M22 8V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V7H21C21.5523 7 22 7.44772 22 8ZM12.4142 5H2V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap">Areas</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-violet-800 bg-violet-100 rounded-full dark:bg-blue-900 dark:text-blue-300">7</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400
-                group-hover:text-gray-600 dark:group-hover:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M22 8V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V7H21C21.5523 7 22 7.44772 22 8ZM12.4142 5H2V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap">Resources</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-violet-800 bg-violet-100 rounded-full dark:bg-blue-900 dark:text-blue-300">12</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400
-                group-hover:text-gray-600 dark:group-hover:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M22 8V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V7H21C21.5523 7 22 7.44772 22 8ZM12.4142 5H2V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap">Archives</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-violet-800 bg-violet-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-                    </a>
-                </li>
-
-
+                {% include 'notes_app/components/starred_categories_partial.html' %}
 
                 <li>
                     <a href="#"

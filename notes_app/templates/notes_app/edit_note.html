@@ -10,6 +10,11 @@
     <form action="" method="POST" enctype="multipart/form-data" class="mt-6 creat-note-form">
         {% csrf_token %}
         {{ form.title|as_crispy_field }}
+        {% if note.image %}
+        <img class="note-detail-image md:object-contain rounded md:h-80 m-auto lg:mb-8" src=" {{ note.image.url }}"
+            alt="">
+        {% endif %}
+
         <div class="image-upload-box-container my-10">
             <div class="image-upload-text">
                 <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
@@ -20,7 +25,10 @@
                 </svg>
                 <span class="font-bold">Feature Image</span>
             </div>
-            {{ form.image|as_crispy_field }}
+            <div class="hidden-image-input">
+                {{ form.image|as_crispy_field }}
+            </div>
+            <button type="button">click me</button>
         </div>
         <!-- <div class="image-upload-box-container-text">
             <p>Feature Image</p>
@@ -29,7 +37,7 @@
         {{ form.content|as_crispy_field }}
         <button type="submit"
             class="mt-4 px-4 w-auto bg-violet-700 hover:bg-violet-600 text-white font-bold p-2 rounded inline-flex items-center">
-            Create Note</button>
+            Save</button>
     </form>
 </div>
 

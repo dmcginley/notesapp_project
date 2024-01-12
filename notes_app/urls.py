@@ -14,4 +14,10 @@ urlpatterns = [
     path('edit-note/<slug:slug>/', NoteUpdateView.as_view(), name='edit_note'),
     path('delete-note/<slug:slug>/', NoteDeleteView.as_view(),
          name='delete_note'),
+
+    path('folder/<slug:category_slug>/', views.category_list,
+         name='category_list'),
+
+    path('starred-categories/', views.starred_categories,
+         name='starred_categories'),
 ]

@@ -1,0 +1,133 @@
+:root {
+    --primary_color: #7e2efb;
+}
+
+#navbar {
+    width: calc(100% - 256px);
+}
+
+.note_container_ellipsis {
+    position: relative;
+    max-height: 240px;
+    overflow: hidden;
+    border-radius: .5rem;
+}
+
+
+.content-fade-overlay {
+    position: absolute;
+    width: calc(100% - 2em);
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(transparent 100px, white 84%);
+}
+
+.note-card {
+    background-color: #ffffff !important;
+    border-radius: .25rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.096);
+    transition: 100ms;
+}
+
+
+
+*/ .ql-editor {
+    font-size: 1rem;
+    min-height: 300px;
+
+}
+
+#quill-id_content {
+    border: none;
+}
+
+.ql-toolbar.ql-snow {
+    border-width: 0 0 1px 0 !important;
+}
+
+.ql-toolbar.ql-snow span {
+    margin-left: 0 !important;
+
+}
+
+
+
+.creat-note-form #id_title {
+    /* border:; */
+    outline: 2em;
+    border-radius: 0;
+    border-width: 0 0 1px 0;
+    padding-left: 0;
+    font-size: 1.6rem;
+
+    background: transparent;
+}
+
+.clearablefileinput {
+    opacity: 0;
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    background-color: pink;
+}
+
+.image-upload-box-container {
+    position: relative;
+    /* border-radius: 6px; */
+    background-image: repeating-linear-gradient(0deg, #c0bfbc, #c0bfbc 14px, transparent 14px, transparent 28px, #c0bfbc 28px), repeating-linear-gradient(90deg, #c0bfbc, #c0bfbc 14px, transparent 14px, transparent 28px, #c0bfbc 28px), repeating-linear-gradient(180deg, #c0bfbc, #c0bfbc 14px, transparent 14px, transparent 28px, #c0bfbc 28px), repeating-linear-gradient(270deg, #c0bfbc, #c0bfbc 14px, transparent 14px, transparent 28px, #c0bfbc 28px);
+    background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    transition: 140ms;
+}
+
+.image-upload-box-container:hover {
+    /* opacity: .5; */
+    background-color: rgba(235, 229, 240, 0.425);
+
+}
+
+.image-upload-text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #4e4e4e;
+}
+
+
+.image-upload-box-container div label {
+    opacity: 0;
+}
+
+/* .image-upload-box-container-text {
+    position: absolute;
+    display: flex;
+
+} */
+
+
+
+.category-dropdown select {
+    background: transparent !important;
+}
+
+/* ------------------------------------ */
+/* mobile */
+/* ------------------------------------ */
+@media only screen and (max-width: 640px) {
+
+    #navbar {
+        width: 100%
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+
+    /* .note-detail-image {
+        width: 30% !important;
+    } */
+}

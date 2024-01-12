@@ -18,12 +18,36 @@
 
     <!-- Qill css file -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- HTMX script -->
+    <script src="https://unpkg.com/htmx.org@1.9.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 
 <body class="main-grid text-slate-900 bg-gray-100 font-serif leading-normal tracking-normal">
-    {% include 'notes_app/components/side_navbar.html' %}
 
+    {% include 'notes_app/components/side_navbar.html' %}
+    {% if messages %}
+    <div class="message-container absolute w-full flex z-50">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %} {# warning #}
+        {% include 'notes_app/components/messages/warning.html' %}
+        {% elif level == 30 %} {# danger #}
+        {% include 'notes_app/components/messages/danger.html' %}
+        {% elif level == 25 %} {# success #}
+        {% include 'notes_app/components/messages/success.html' %}
+        {% else %}
+        {% include 'notes_app/components/messages/info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         {% block content %}{% endblock content %}
     </div>

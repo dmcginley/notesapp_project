@@ -7,20 +7,25 @@
 <div class="pt-20 p-4 sm:ml-64 sm:w-auto 2xl:ml-32 2xl:w-full">
     <div class="container w-full">
 
+        {% include 'notes_app/components/para_infobox.html' %}
+
+
+        <p class="text-center pb-6">The Simple System for Organizing Your Digital Life in Seconds</p>
+
         <h1 class="text-3xl pb-10">Newly Added Notes</h1>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mb-4">
+        <div class="not-card-container-grid grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-3 gap-4 mb-4">
 
             {% for note in notes %}
-            <div class="">
-                <a href="{{ note.get_absolute_url }}"
-                    class="note-link-hover flex flex-col bg-white border border-gray-200 rounded shadow md:m.,flex-row md:max-w-xl hover:bg-gray-100">
+
+            <div class="note-card">
+                <a href="{{ note.get_absolute_url }}" class="flex-col md:max-w-xl">
                     {% if note.image %}
                     <img class="object-cover w-full rounded-t h-24 md:h-40" src="{{ note.image.url }}" alt="">
                     {% endif %}
-                    <div class="note_container_ellipsis flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-grey-900 ">{{note.title}}
+                    <div class="note_container_ellipsis flex flex-col justify-between p-4">
+                        <h5 class="mb-2 text-2xl font-bold text-grey-900 ">{{note.title}}
                         </h5>
-                        <div class="note_container_ellipsis_content font-normal text-gray-700 dark:text-gray-400">
+                        <div class="note_container_ellipsis_content">
                             {{ note.content.html|safe }}</div>
                         <div class="content-fade-overlay"></div>
                     </div>
@@ -32,7 +37,22 @@
             </div>
             {% endfor %}
         </div>
-
     </div>
 </div>
+
+
+
+
+<div class="flex-quote" style="color: #49565b;display: flex; align-items: center; padding: 0 2em;">
+    <img style="margin-right: 1em; border-radius: 50%;"
+        src="https://assets.cdn.filesafe.space/AiMpEeDtzhg0NUgz85b9/media/655c31480226f0f1380981f7.jpeg" width="46"
+        height="46" alt="">
+    <p>― Phil McMahon</p>
+</div>
+
+
+
+
+
+
 {% endblock content %}

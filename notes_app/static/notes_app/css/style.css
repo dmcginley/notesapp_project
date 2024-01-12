@@ -13,17 +13,54 @@
     border-radius: .5rem;
 }
 
+
 .content-fade-overlay {
     position: absolute;
     width: calc(100% - 2em);
     height: 100%;
+    pointer-events: none;
     background: linear-gradient(transparent 100px, white 84%);
 }
 
-.note-link-hover:hover .content-fade-overlay {
-    background: linear-gradient(transparent 100px, #f3f4f6 84%);
 
+/*  TODO: fix card hight in grid shouldnt be 100% */
+.not-card-container-grid {
+    grid-auto-rows: min-content;
+    /* NEW */
 }
+
+.btn {
+    font-weight: bold;
+    background-color: rgb(24, 24, 26);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.233);
+    max-width: 384px;
+    margin: auto;
+    cursor: none;
+    transition: 100ms;
+}
+
+
+.note-card {
+    display: block;
+    background-color: #ffffff !important;
+    border-radius: .25rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.096);
+    transition: 100ms;
+    height: fit-content;
+}
+
+
+
+.message {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+    /* height: 100px; */
+    background-color: #7e2efb !important;
+    padding: 2em;
+}
+
 
 .ql-editor {
     font-size: 1rem;
@@ -44,6 +81,15 @@
 
 }
 
+#error_1_id_content strong {
+    display: none;
+}
+
+#error_1_id_content::after {
+    content: 'Please compose your note first';
+    font-weight: bold;
+    font-style: normal;
+}
 
 
 .creat-note-form #id_title {
@@ -56,6 +102,15 @@
 
     background: transparent;
 }
+
+
+.hidden-image-input * {
+    opacity: 0;
+    pointer-events: inherit;
+}
+
+
+
 
 .clearablefileinput {
     opacity: 0;
@@ -103,6 +158,11 @@
 } */
 
 
+
+.category-dropdown select {
+    background: transparent !important;
+}
+
 /* ------------------------------------ */
 /* mobile */
 /* ------------------------------------ */
@@ -119,4 +179,36 @@
     /* .note-detail-image {
         width: 30% !important;
     } */
+}
+
+
+.out-of-stock {
+    display: none !important;
+}
+
+.out-of-stock::after {
+    content: "Sold";
+    font-weight: bold;
+    font-size: 1.2em;
+    color: red;
+}
+
+
+.onsale {
+    top: 4px !important;
+    left: 4px !important;
+
+    background: #fff;
+    border: 1px solid #43454b;
+    border-radius: 4px;
+    color: #43454b;
+    display: inline-block;
+    font-size: .875em;
+    font-weight: 600;
+    padding: .25em .75em;
+    text-align: center;
+    text-transform: uppercase;
+    width: auto;
+    z-index: 9;
+
 }

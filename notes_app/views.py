@@ -2,13 +2,14 @@ from .forms import NoteForm
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views import generic
-from django.contrib.auth.models import User
+from django.contrib import messages
 import json
+from django.contrib.auth.models import User
 
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, redirect
 
-from .models import Note
+from .models import Note, Category
 
 from django.views.generic import (
     ListView, DetailView,
@@ -49,7 +50,14 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
         content_data = json.loads(form.cleaned_data['content'])
         content = content_data.get('html', '')
 
-        print(content)
+        # Retrieve the category slug from the URL parameter
+        category_slug = self.request.GET.get('category')
+
+        if category_slug:
+            # Get the category object based on the slug
+            category = get_object_or_404(Category, slug=category_slug)
+            form.instance.category = category
+
         response = super().form_valid(form)
 
         return response
@@ -63,23 +71,12 @@ class NoteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        messages.success(self.request, 'Note updated successfully')
         return super().form_valid(form)
 
     def test_func(self):
         note = self.get_object()
-        if self.request.user == note.author:
-            return True
-        return False
-
-    # def test_func(self):
-    #     note = self.get_object()
-    #     if self.request.user == note.author:
-    #         return True
-    #     return False
-
-    # def form_valid(self, form):
-    #     messages.success(self.request, 'Post updated successfully')
-    #     return super().form_valid(form)
+        return self.request.user == note.author
 
 
 # def duplicate_note(request, note_slug):
@@ -115,6 +112,52 @@ class NoteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-    # def form_valid(self, form):
-    #     messages.success(self.request, 'Post deleted.')
-    #     return super().form_valid(form)
+# TODO: messages not showing up, fix, CSS also added to tey debug
+    def form_valid(self, form):
+        messages.success(self.request, 'Note deleted.')
+        return super().form_valid(form)
+
+
+# --------------------------------
+#   category/folder views
+# --------------------------------
+
+
+def categories(request):
+    all_categories = Category.objects.all()
+    return {
+        'all_categories': all_categories
+    }
+
+
+def starred_categories(request):
+    starred_categories = Category.objects.filter(is_starred=True)
+    print('starred_categories', starred_categories)
+
+    context = {
+        'starred_categories': starred_categories
+
+    }
+
+    return render(request, 'notes_app/starred_categories.html', context)
+
+
+def category_list(request, category_slug):
+
+    category = get_object_or_404(Category, slug=category_slug)
+    notes = Note.objects.filter(category=category)
+
+    # Get subcategories of the current category
+    subcategories = category.subcategories.all()
+    # starred_categories = Category.objects.filter(is_starred=True)
+    page_title = category.name
+
+    context = {
+        'notes': notes,
+        'category': category,
+        'subcategories': subcategories,
+        # 'starred_categories': starred_categories,
+        'page_title': page_title,
+    }
+
+    return render(request, 'notes_app/category_list.html', context)

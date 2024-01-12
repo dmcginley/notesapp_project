@@ -2,6 +2,7 @@
 {% load tailwind_filters %}
 {% block title %}{{note.title}}{% endblock %}
 
+
 {% block content %}
 
 
@@ -9,6 +10,7 @@
     <!-- form -->
     <form action="" method="POST" enctype="multipart/form-data" class="mt-6 creat-note-form">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.title|as_crispy_field }}
         <div class="image-upload-box-container my-10">
             <div class="image-upload-text">
@@ -27,11 +29,44 @@
         </div> -->
 
         {{ form.content|as_crispy_field }}
+
+
+        <div class="w-fit category-dropdown">
+            {{ form.category|as_crispy_field }}
+        </div>
+
+
+
         <button type="submit"
             class="mt-4 px-4 w-auto bg-violet-700 hover:bg-violet-600 text-white font-bold p-2 rounded inline-flex items-center">
             Create Note</button>
     </form>
 </div>
 
+<script>
+    $(document).ready(function () {
+        // Check if the "category" URL parameter is present
+        var categorySlug = getParameterByName('category');
+        var selectedCategory = $(".category-dropdown option:selected").text();
+
+        if (categorySlug) {
+            $(".category-dropdown").hide();
+            $("#selected-category").text(selectedCategory);
+        }
+
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            var results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    });
+</script>
 
 {% endblock content %}

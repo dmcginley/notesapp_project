@@ -30,6 +30,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+ALLOWED_FILTERS = [
+    'order_by',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,10 +47,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_tailwind",
 
-    'notes_app.apps.NotesAppConfig',
+    'kanban_app.apps.KanbanAppConfig',
+    'todo_app.apps.TodoAppConfig',
+
     'tailwind',
     'theme',
     # 'django_browser_reload',
+    'notes_app.apps.NotesAppConfig',
 
 ]
 
@@ -56,8 +63,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     # 'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
@@ -74,6 +82,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #  'django.contrib.messages.context_processors.messages',
+                'notes_app.views.categories',
+                'notes_app.context_processors.starred_categories',  # Add this line
             ],
         },
     },
