@@ -14,9 +14,8 @@ class Category(models.Model):
     order = models.PositiveIntegerField(default=0)  # Add the order field
     parent_category = models.ForeignKey(
         'self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories')
-    is_starred = models.BooleanField(
-        default=False)  # field for starred category
-
+    is_starred = models.BooleanField(default=False)  # field for starred category
+    is_deletable = models.BooleanField(default=True)
     class Meta:
         verbose_name_plural = "categories"
 
@@ -26,6 +25,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    # @classmethod
+    # def create(cls, name, is_starred=False, is_deletable=True):
+    #     return cls.objects.create(name=name, is_starred=is_starred)
+
+    def delete_category(self):
+        if self.is_deletable:
+            self.delete()
+        else:
+            raise Exception("Cannot delete this category")
     def get_absolute_url(self):
         return reverse('board_app:category_list', args=[self.slug])
 
@@ -33,6 +41,30 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         base_slug = slugify(self.name)
+    #         slug = base_slug
+    #         counter = 1
+    #         while Category.objects.filter(slug=slug).exists():
+    #             slug = f"{base_slug}-{counter}"
+    #             counter += 1
+    #         self.slug = slug
+    #     super().save(*args, **kwargs)
+
+
+    @classmethod
+    def create(cls, name, is_deletable=True, is_starred=False):
+        category = cls(name=name, is_deletable=is_deletable, is_starred=is_starred)
+        category.save()  # Call save to generate slug
+        return category
+
+if not Category.objects.exists():
+    Category.objects.create(name="Projects", is_deletable=True, is_starred=True, order=0)
+    Category.objects.create(name="Areas", is_deletable=True, is_starred=True, order=1)
+    Category.objects.create(name="Resources", is_deletable=True, is_starred=True, order=2)
+    Category.objects.create(name="Archives", is_deletable=True, is_starred=True, order=3)
 
 
 class Note(models.Model):

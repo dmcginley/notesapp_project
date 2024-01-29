@@ -131,15 +131,27 @@ def categories(request):
 
 
 def starred_categories(request):
+
+# Create initial categories
+    # if not Category.objects.exists():
+    #     Category.create(name="Projects", is_deletable=True, is_starred=True)
+    #     Category.create(name="Areas", is_deletable=True,is_starred=True)
+    #     Category.create(name="Resources", is_deletable=True, is_starred=True)
+    #     Category.create(name="Archives", is_deletable=True, is_starred=True)
+
     starred_categories = Category.objects.filter(is_starred=True)
-    print('starred_categories', starred_categories)
+    # print('starred_categories', starred_categories)
+    
+    # for category in starred_categories:
+    #     category.detail_url = reverse('category_detail', kwargs={'slug': category.slug})
+    #     print(f"Category: {category.name}, Detail URL: {category.detail_url}")
 
     context = {
         'starred_categories': starred_categories
-
     }
 
     return render(request, 'notes_app/starred_categories.html', context)
+
 
 
 def category_list(request, category_slug):
